@@ -67,7 +67,7 @@ const location = async (req, res) => {
     }
     try {
         const updateLike = await comment.findByIdAndUpdate(_id, {
-            $set: { "longitude": longitude, "latitudey":latitude }
+            $set: { "longitude": longitude, "latitude":latitude }
         })
         res.status(200).json(updateLike)
     } catch (error) {
