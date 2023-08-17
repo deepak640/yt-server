@@ -57,4 +57,22 @@ const editcomment = async (req, res) => {
     }
 
 }
-module.exports = { postcomment, editcomment, deletecomment, getcomment }
+
+
+const location = async (req, res) => {
+    const { id: _id } = req.params
+    const { longitude, latitude } = req.body
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send("Unavailable..");
+    }
+    try {
+        const updateLike = await comment.findByIdAndUpdate(_id, {
+            $set: { "longitude": longitude, "latitudey":latitude }
+        })
+        res.status(200).json(updateLike)
+    } catch (error) {
+        res.status(400).json("error:", error)
+
+    }
+}
+module.exports = { postcomment, editcomment, deletecomment, getcomment, location }
