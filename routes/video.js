@@ -7,6 +7,7 @@ const { viewsController } = require('../controllers/views.js')
 const { likeVideoController, alllikeVideoController, deletelikeVideoController } = require('../controllers/likeVideo.js')
 const { watchLaterController, allwatchLaterController, deletewatchLaterController } = require('../controllers/watchlater.js')
 const { HistoryController, allHistoryController, clearHistoryController } = require('../controllers/History.js')
+const { LikedHistoryController, allLikedHistoryController, clearLikedHistoryController } = require('../controllers/LikedHistory.js')
 const auth = require('../middleware/auth.js')
 
 router.post('/uploadVideo', auth, upload.single('file'), uploadVideo)
@@ -22,4 +23,7 @@ router.delete('/deletewatchLater/:videoId/:Viewer', auth, deletewatchLaterContro
 router.post('/History', auth, HistoryController)
 router.get('/getAllHistory', allHistoryController)
 router.delete('/clearHistory/:userId', auth, clearHistoryController)
+router.post('/LikedHistory', auth, LikedHistoryController)
+router.get('/getAllLikedHistory', allLikedHistoryController)
+router.delete('/clearLikedHistory/:userId', auth, clearLikedHistoryController)
 module.exports = router;
