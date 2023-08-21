@@ -61,13 +61,13 @@ const editcomment = async (req, res) => {
 
 const location = async (req, res) => {
     const { id: _id } = req.params
-    const { longitude, latitude } = req.body
+    const { address } = req.body
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send("Unavailable..");
     }
     try {
         const updateLike = await comment.findByIdAndUpdate(_id, {
-            $set: { "longitude": longitude, "latitude":latitude }
+            $set: { "address": address }
         })
         res.status(200).json(updateLike)
     } catch (error) {

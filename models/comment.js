@@ -9,8 +9,7 @@ const commentSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    latitude: String,
-    longitude: String
+    address: String
 })
 
 module.exports = mongoose.model("comments", commentSchema)
