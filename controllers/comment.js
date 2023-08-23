@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 const postcomment = async (req, res) => {
     const commentData = req.body
     const postcomment = new comment(commentData)
-    console.log("🚀 ~ file: comment.js:8 ~ postcomment ~ postcomment:", postcomment)
     try {
         await postcomment.save()
         res.status(200).json('post the comment')
