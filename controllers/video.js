@@ -1,24 +1,18 @@
 const videoFiles = require('../models/videoFiles')
 const uploadVideo = async (req, res, next) => {
-    if (req.file === undefined) {
-        res.status(404).json({ message: "plz upload a '.mp4 video file only" })
-    } else {
-        try {
-            const file = new videoFiles({
-                videoTitle: req.body.title,
-                fileName: req.file.originalname,
-                filePath: req.file.path,
-                fileType: req.file.mimetype,
-                fileSize: req.file.size,
-                videoChannel: req.body.channel,
-                Uploader: req.body.Uploader,
-            })
-            await file.save()
-            res.status(201).send('File Uploaded successfully')
-        } catch (error) {
-            res.status(400).send(error.message)
+    console.log(req.body)
+    try {
+        const file = new videoFiles({
+            videoTitle: req.body.title,
+            filePath: req.body.filePath,
+            videoChannel: req.body.channel,
+            Uploader: req.body.Uploader,
+        })
+        await file.save()
+        res.status(201).json('File Uploaded successfully')
+    } catch (error) {
+        res.status(400).send(error.message)
 
-        }
     }
 }
 

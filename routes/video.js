@@ -10,7 +10,7 @@ const { HistoryController, allHistoryController, clearHistoryController } = requ
 const { LikedHistoryController, allLikedHistoryController, clearLikedHistoryController } = require('../controllers/LikedHistory.js')
 const auth = require('../middleware/auth.js')
 
-router.post('/uploadVideo', auth, upload.single('file'), uploadVideo)
+router.post('/uploadVideo', auth, uploadVideo)
 router.get('/getvideos', getAllvideos)
 router.patch('/like/:id', auth, likeController)
 router.patch('/views/:id', viewsController)
